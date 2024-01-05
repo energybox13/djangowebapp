@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px); /* Considering padding */
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        input[type="text"]:disabled {
+            background-color: #eee;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calculator</h1>
+    <br>
+    <h2>This backend learning project made in Django and SQLLite, Up for live testing and server load please share us your feedback on my mail id psaurav0319@gamil.com </h2>
+    <br>
+    <form method="get">
+    
+        <label for="num1">Value 1</label>
+        <input type="text" name="num1" class="form-control" value={{n1}}>
+        
+        <label for="opr">Select Operator</label>
+        <select name="opr" class="form-control">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="P/L">Profit/Loss</option>
+            <option value="E/D">EVEN/ODD</option>
+        </select>
+        
+        <label for="num2">Value 2</label>
+        <input type="text" name="num2" class="form-control" value={{n2}}>
+        
+        <button type="submit">Calculate</button>
+        
+        <label for="cal">Result</label>
+        <input type="text" value="{{cal}}" class="form-control" disabled>
+    </form>
+<br>
+<form method="get">
+    <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <!-- Feedback Textarea -->
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" rows="4" cols="50" required></textarea><br><br>
+
+    <button type="submit">Submit Feedback</button>
+</form>
+
+
+</body>
+
+</html>
+

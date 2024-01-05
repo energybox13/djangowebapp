@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculate Average</title>
+</head>
+
+<body>
+    <form method="post">
+        {%csrf_token%}
+        {{ form }}
+        <br>
+        <button type="submit">Calculate</button>
+    </form>
+
+    <br>
+    <label for="title">AVERAGE:</label><br>
+    <input type="text" value="{{ avgc }}"><br>
+</body>
+
+</html>

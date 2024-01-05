@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        strong {
+            font-weight: bold;
+        }
+        audio {
+            width: 100%;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Music Player created By Prasoon </h1>
+    <br>
+    <h1> Contains all my favourite songs available for you to listen</h1>
+    <ul>
+        {% for song in songs_info %}
+            <li>
+                <br>
+                <strong>Title:</strong> {{ song.title }}<br>
+                <strong>Duration:</strong> {{ song.duration }} seconds<br>
+                <strong>Artist:</strong> {{ song.artist|default:"Unknown" }}<br>
+                <br>
+                <audio controls>
+                    <source src="{% static 'New_folder/'|add:song.title %}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <button onclick="playPause()">Play/Pause</button>
+    <button onclick="nextSong()">Next</button>
+
+    <ul>
+        {% for song in songs_info %}
+            <li>{{ song.title }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

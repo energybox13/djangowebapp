@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prasoon's Cricket Stats</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        a.calculator-link {
+            display: block;
+            text-align: center;
+            margin: 20px auto; /* Adjust margin for positioning */
+            text-decoration: none;
+            color: #fff;
+            background-color: #4caf50;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            width: fit-content; /* Set width to fit content */
+        }
+
+        a.calculator-link:hover {
+            background-color: #45a049;
+        }
+            /* Styling for the moving text */
+            .moving-text {
+                white-space: nowrap; /* Prevent text from wrapping */
+                overflow: hidden; /* Hide overflowing text */
+                animation: moveText 10s linear infinite; /* Animation properties */
+            }
+    
+            /* Keyframes for the animation */
+            @keyframes moveText {
+                0% {
+                    transform: translateX(0); /* Initial position */
+                }
+                100% {
+                    transform: translateX(100%); /* Move text to 100% of its container */
+                }
+            }
+    </style>
+</head>
+<body>
+
+    <h1>Cricket Stats Input Courtesy Prasoon</h1>
+     <!-- Beautified Calculator App link -->
+<br>
+<div class="moving-text">
+    Please use Calculator App and let us know your feedback!
+</div>
+<br>
+     <a href="{% url 'calc' %}" class="calculator-link" target="_blank">Calculator App</a>
+
+    <form method="post" enctype="multipart/form-data">
+
+        {%csrf_token%}
+        
+
+        <label for="player_name">Player Name:</label>
+        <input type="text" id="player_name" name="player_name" required>
+
+        <label for="fiftees">Fiftees:</label>
+        <input type="number" id="fiftees" name="fiftees" required>
+
+        <label for="hundreds">Hundreds:</label>
+        <input type="number" id="hundreds" name="hundreds" required>
+
+        <label for="wickets">Wickets:</label>
+        <input type="number" id="wickets" name="wickets" required>
+
+        <label for="average">Batting Average:</label>
+        <input type="number" id="average" name="average" step="0.01" required>
+
+         <label for="average">Cricketer Image:</label>
+        <input type="file" id="cricket" name="image">
+
+        <label for="average">Iconic Moments:</label>
+        <input type="file" id="imomments" name="videos">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <style>
+        /* ... (previous styles) ... */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <form  method="post">
+    {%csrf_token%}
+
+        <!-- ... (previous form inputs) ... -->
+    </form>
+
+    <!-- Table for Displaying Data -->
+    <h2>Cricket Stats Table</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Player Name</th>
+            <th>Fiftees</th>
+            <th>Hundreds</th>
+            <th>Wickets</th>
+            <th>Batting Average</th>
+            <th>Image</th>
+            <th>Iconic Moments</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- You will need to dynamically generate rows based on your data -->
+        <!-- Example row: -->
+        {% for player in cdata %}
+            <tr>
+                <td>{{ player.player_name }}</td>
+                <td>{{ player.fiftees }}</td>
+                <td>{{ player.hundreds }}</td>
+                <td>{{ player.wickets }}</td>
+                <td>{{ player.average }}</td>
+                <td>
+                    <img src="/media_main/{{ player.photo }}" height="300px">
+                </td>
+                <td>
+                    <video width="300" height="300" controls>
+                        <source src="/media_main/{{ player.video }}" type="video/mp4">
+                    </video>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+</body>
+</html>
